@@ -1,0 +1,61 @@
+{% extends 'web/base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div id='main' class='all_colors' data-scroll-offset='63'>
+
+	<div id='av_section_1' class='avia-section main_color avia-section-default avia-no-border-styling av-section-color-overlay-active avia-bg-style-scroll  avia-builder-el-0  el_before_av_submenu  avia-builder-el-first   av-minimum-height av-minimum-height-custom container_wrap fullsize' style='background-repeat: no-repeat; background-image: url(https://amerixlogistics.com/wp-content/uploads/2020/07/birds-eye-view-photo-of-freight-containers-2226458-1-scaled.jpg);background-attachment: scroll; background-position: top left;  '  data-section-bg-repeat='no-repeat'><div class='av-section-color-overlay-wrap'><div class='av-section-color-overlay' style='opacity: 0.5; background-color: #000000; '></div><div class='container' style='height:100px'><main  role="main" itemprop="mainContentOfPage"  class='template-page content  av-content-full alpha units'><div class='post-entry post-entry-type-page post-entry-626'><div class='entry-content-wrapper clearfix'>
+    <section class="av_textblock_section "  itemscope="itemscope" itemtype="https://schema.org/CreativeWork" >
+      <div class='avia_textblock  av_inherit_color '  style='font-size:40px; color:#ffffff; '  itemprop="text" >
+        <h1 class="av-special-heading-tag " style="text-align: center;"><strong>CREATE ACCOUNT</strong></h1>
+     </div>
+    </section>
+  </div>
+</div> 
+</main>
+</div>
+</div>
+  </div>
+  <div class='clear'></div> 
+  <div id='av_section_2' class='avia-section main_color avia-section-default avia-no-border-styling avia-bg-style-scroll  avia-builder-el-3  el_after_av_submenu  el_before_av_section   container_wrap fullsize' style=' '  >
+    <div class='container' >
+      <div class='template-page content  av-content-full alpha units'>
+        <div class='post-entry post-entry-type-page post-entry-626'>
+          <div class='entry-content-wrapper clearfix'>
+            <form class="user" method="POST">
+              {% csrf_token %}
+              {% for non_field_error in form.non_field_errors %}
+                <p class="alert-danger">{{ non_field_error }}</p>
+              {% endfor %}
+
+             {% for field in form %}
+                {% if field.errors %}
+                  {% for error in field.errors %}
+                    <div class="alert alert-danger" role="alert">
+                      <p>{{error}}</p>
+                    </div>
+                  {% endfor %}
+                {% endif %}
+             {% endfor %}
+             
+             {{form|crispy}}
+             
+            <div class="form-group">
+              <button class="btn btn-primary" type="submit">CREATE ACCOUNT</button>
+            </div>
+            </form>
+            <div class="border-bottom pt-3">
+              <small class="text-muted">Already Have an account? <a href="#">Login</a></small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+</div>
+{% endblock %}
